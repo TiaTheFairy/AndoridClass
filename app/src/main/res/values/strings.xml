@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">AndoridClass</string>
+
+    <string name="menu_button">Buttons</string>
+    <string name="menu_layout">Layout</string>
+    <string name="menu_view">Recycler View</string>
+    <string name="button_tv_hello">Hello</string>
+    <string name="button_tv_world">World</string>
+    <string name="button_bt_switch">Switch</string>
+    <string name="button_tv_nottrigger">Not triggered</string>
+    <string name="button_tv_trigger">Triggered</string>
+    <string name="button_bt_method1">Anonymous Classes</string>
+    <string name="button_bt_method2">Custom Listener</string>
+    <string name="button_bt_method3">Extend And Override</string>
+    <string name="button_bt_method4">Xml Button Event</string>
+
+    <string name="layout_tv_hello">Hello</string>
+    <string name="layout_tv_world">World</string>
+    <string name="layout_bt_change">Change Text</string>
+
+    <string name="books_1">软件项目管理案例教程（第4版）</string>
+    <string name="books_2">创新工程实践</string>
+    <string name="books_3">信息安全数学基础（第2版）</string>
+</resources>
