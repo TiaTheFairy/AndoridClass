@@ -21,4 +21,10 @@
     <string name="books_1">软件项目管理案例教程（第4版）</string>
     <string name="books_2">创新工程实践</string>
     <string name="books_3">信息安全数学基础（第2版）</string>
+    <string name="recycleview_edit">Eidt</string>
+    <string name="recycleview_edit2">Edit Item </string>
+    <string name="recycleview_delete">Delete Item</string>
+    <string name="recycleview_name">Name</string>
+    <string name="recycleview_save">Save</string>
+    <string name="recycleview_cancel">Cancel</string>
 </resources>
