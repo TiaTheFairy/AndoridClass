@@ -1,5 +1,9 @@
 package com.example.andoridclass;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -19,12 +24,47 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class BookListMainActivity extends AppCompatActivity {
 
     private List<Book> books;
+    private MyRecyclerViewAdapter recyclerViewAdapter;
+    public static final int RESULT_CODE_ADD_DATA = 996;
+
+    ActivityResultLauncher<Intent> launcherAdd = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+        @Override
+        public void onActivityResult(ActivityResult result) {
+            Intent data = result.getData();
+            int resultCode = result.getResultCode();
+            if(resultCode== RESULT_CODE_ADD_DATA) {
+                if (null == data) return;
+                String name = data.getStringExtra("name");
+                int position = data.getIntExtra("position", books.size());
+                books.add(position, new Book(R.drawable.book_no_name, name));
+                recyclerViewAdapter.notifyItemInserted(position);
+            }
+        }
+    });
+
+    ActivityResultLauncher<Intent>  launcherEdit = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+        @Override
+        public void onActivityResult(ActivityResult result) {
+            Intent data = result.getData();
+            int resultCode = result.getResultCode();
+            if(resultCode== RESULT_CODE_ADD_DATA) {
+                if(null==data) return;
+                String name = data.getStringExtra("name");
+                int position = data.getIntExtra("position", books.size());
+                books.get(position).setName(name);
+                recyclerViewAdapter.notifyItemChanged(position);
+            }
+        }
+    });
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +73,17 @@ public class BookListMainActivity extends AppCompatActivity {
 
         initData();
 
+        FloatingActionButton fabAdd = findViewById(R.id.recycle_floatingActionButton);
+        fabAdd.setOnClickListener(View ->{
+            Intent intent = new Intent(BookListMainActivity.this, EditBookActivity.class);
+            intent.putExtra("position", books.size());
+            launcherAdd.launch(intent);
+        });
+
         RecyclerView mainRecycleView = findViewById(R.id.recycle_view_books);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         mainRecycleView.setLayoutManager(layoutManager);
+        recyclerViewAdapter = new MyRecyclerViewAdapter(books);
         mainRecycleView.setAdapter(new MyRecyclerViewAdapter (books));
     }
 
@@ -99,9 +147,11 @@ public class BookListMainActivity extends AppCompatActivity {
             @Override
             public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo){
                 int position = getAdapterPosition();
-                MenuItem menuItemEdit = contextMenu.add(Menu.NONE,1,1,getResources().getString(R.string.recycleview_edit2)+ " " + (position+1));
-                MenuItem menuItemDelete = contextMenu.add(Menu.NONE,2,2,getResources().getString(R.string.recycleview_delete)+ " " + (position+1));
+                MenuItem menuItemAdd = contextMenu.add(Menu.NONE, 1,1,getResources().getString(R.string.recycleview_add)+" "+ (position+1));
+                MenuItem menuItemEdit = contextMenu.add(Menu.NONE,2,2,getResources().getString(R.string.recycleview_edit2)+ " " + (position+1));
+                MenuItem menuItemDelete = contextMenu.add(Menu.NONE,3,3,getResources().getString(R.string.recycleview_delete)+ " " + (position+1));
 
+                menuItemAdd.setOnMenuItemClickListener(this);
                 menuItemEdit.setOnMenuItemClickListener(this);
                 menuItemDelete.setOnMenuItemClickListener(this);
             }
@@ -109,13 +159,48 @@ public class BookListMainActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem){
                 int position = getAdapterPosition();
+                Intent intent;
                 switch(menuItem.getItemId()){
                     case 1:
-                        View rc_edit = LayoutInflater.from(BookListMainActivity.this).inflate(R.layout.rc_edit,null);
-                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(BookListMainActivity.this);
-                        alertDialogBuilder.setView(rc_edit);
+                        intent = new Intent(BookListMainActivity.this,EditBookActivity.class);
+                        intent.putExtra("position", position);
+                        launcherAdd.launch(intent);
+                        break;
 
-                        alertDialogBuilder.setPositiveButton(getResources().getString(R.string.recycleview_save), new DialogInterface.OnClickListener() {
+                    case 2:
+                        intent = new Intent(BookListMainActivity.this,EditBookActivity.class);
+                        intent.putExtra("position", position);
+                        intent.putExtra("name", books.get(position).getName());
+                        launcherEdit.launch(intent);
+                        break;
+                    /*
+                    case 1:
+                        View rc_add = LayoutInflater.from(BookListMainActivity.this).inflate(R.layout.rc_edit,null);
+                        AlertDialog.Builder alertDialogBuilderAdd = new AlertDialog.Builder(BookListMainActivity.this);
+                        alertDialogBuilderAdd.setView(rc_add);
+
+                        alertDialogBuilderAdd.setPositiveButton(getResources().getString(R.string.recycleview_save), new DialogInterface.OnClickListener(){
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i){
+                                EditText et = rc_add.findViewById(R.id.rce_et);
+                                books.add(position, new Book(R.drawable.book_no_name, et.getText().toString()));
+                                MyRecyclerViewAdapter.this.notifyItemInserted(position);
+                            }
+                        });
+                        alertDialogBuilderAdd.setCancelable(false).setNegativeButton(getResources().getString(R.string.recycleview_cancel), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                            }
+                        });
+                        alertDialogBuilderAdd.create().show();
+                        break;
+                    case 2:
+                        View rc_edit = LayoutInflater.from(BookListMainActivity.this).inflate(R.layout.rc_edit,null);
+                        AlertDialog.Builder alertDialogBuilderEdit = new AlertDialog.Builder(BookListMainActivity.this);
+                        alertDialogBuilderEdit.setView(rc_edit);
+
+                        alertDialogBuilderEdit.setPositiveButton(getResources().getString(R.string.recycleview_save), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 EditText et = rc_edit.findViewById(R.id.rce_et);
@@ -123,21 +208,20 @@ public class BookListMainActivity extends AppCompatActivity {
                                 MyRecyclerViewAdapter.this.notifyItemChanged(position);
                             }
                         });
-                        alertDialogBuilder.setCancelable(false).setNegativeButton(getResources().getString(R.string.recycleview_cancel), new DialogInterface.OnClickListener() {
+                        alertDialogBuilderEdit.setCancelable(false).setNegativeButton(getResources().getString(R.string.recycleview_cancel), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
 
                             }
                         });
-                        alertDialogBuilder.create().show();
+                        alertDialogBuilderEdit.create().show();
                         break;
-
-                    case 2:
+                    */
+                    case 3:
                         books.remove(position);
                         MyRecyclerViewAdapter.this.notifyItemRemoved(position);
                         break;
                 }
-
                 return false;
             }
         }
