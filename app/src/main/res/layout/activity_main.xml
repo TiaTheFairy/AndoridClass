@@ -30,8 +30,8 @@
     <Button
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="@string/menu_data"
-        android:onClick="data"
+        android:text="@string/menu_editBook"
+        android:onClick="editBook"
         android:layout_marginBottom="200dp"/>
 
 </LinearLayout>

@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndoridClass">
         <activity
-            android:name=".Data"
+            android:name=".EditBookActivity"
             android:exported="false" />
         <activity
             android:name=".BookListMainActivity"

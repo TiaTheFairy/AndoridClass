@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void data(View v){
-        Intent intent = new Intent(MainActivity.this, Data.class);
+    public void editBook(View v){
+        Intent intent = new Intent(MainActivity.this, EditBookActivity.class);
         startActivity(intent);
     }
 }
