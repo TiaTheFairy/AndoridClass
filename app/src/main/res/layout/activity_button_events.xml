@@ -14,21 +14,21 @@
         android:gravity="center">
 
         <TextView
-            android:id="@+id/tv1"
+            android:id="@+id/buttons_tv_hello"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/button_tv_hello"
-            android:layout_marginRight="10dp"/>
+            android:layout_marginEnd="10dp"/>
 
         <TextView
-            android:id="@+id/tv2"
+            android:id="@+id/buttons_tv_world"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/button_tv_world"
-            android:layout_marginRight="30dp"/>
+            android:layout_marginEnd="30dp"/>
 
         <Button
-            android:id="@+id/bt1"
+            android:id="@+id/buttons_bt_switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/button_bt_switch"/>
@@ -50,14 +50,14 @@
             android:gravity="center">
 
             <TextView
-                android:id="@+id/tv3"
+                android:id="@+id/buttons_tv_anoy"
                 android:layout_width="90dp"
                 android:layout_height="wrap_content"
                 android:text="@string/button_tv_nottrigger"
-                android:layout_marginRight="30dp"/>
+                android:layout_marginEnd="30dp"/>
 
             <Button
-                android:id="@+id/bt2"
+                android:id="@+id/buttons_bt_anoy"
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:text="@string/button_bt_method1"/>
@@ -72,14 +72,14 @@
             android:gravity="center">
 
             <TextView
-                android:id="@+id/tv4"
+                android:id="@+id/buttons_tv_cust"
                 android:layout_width="90dp"
                 android:layout_height="wrap_content"
                 android:text="@string/button_tv_nottrigger"
-                android:layout_marginRight="30dp"/>
+                android:layout_marginEnd="30dp"/>
 
             <Button
-                android:id="@+id/bt3"
+                android:id="@+id/buttons_bt_cust"
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:text="@string/button_bt_method2"/>
@@ -94,14 +94,14 @@
             android:gravity="center">
 
             <TextView
-                android:id="@+id/tv5"
+                android:id="@+id/buttons_tv_exte"
                 android:layout_width="90dp"
                 android:layout_height="wrap_content"
                 android:text="@string/button_tv_nottrigger"
-                android:layout_marginRight="30dp"/>
+                android:layout_marginEnd="30dp"/>
 
             <Button
-                android:id="@+id/bt4"
+                android:id="@+id/buttons_bt_exte"
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:text="@string/button_bt_method3"/>
@@ -116,11 +116,11 @@
             android:gravity="center">
 
             <TextView
-                android:id="@+id/tv6"
+                android:id="@+id/buttons_tv_xml"
                 android:layout_width="90dp"
                 android:layout_height="wrap_content"
                 android:text="@string/button_tv_nottrigger"
-                android:layout_marginRight="30dp"/>
+                android:layout_marginEnd="30dp"/>
 
             <Button
                 android:layout_width="220dp"

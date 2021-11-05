@@ -4,6 +4,8 @@
     <string name="menu_button">Buttons</string>
     <string name="menu_layout">Layout</string>
     <string name="menu_view">Recycler View</string>
+    <string name="menu_data">Data Across</string>
+
     <string name="button_tv_hello">Hello</string>
     <string name="button_tv_world">World</string>
     <string name="button_bt_switch">Switch</string>
@@ -27,4 +29,10 @@
     <string name="recycleview_name">Name</string>
     <string name="recycleview_save">Save</string>
     <string name="recycleview_cancel">Cancel</string>
+
+    <string name="data_tv_title">Data of Books</string>
+    <string name="data_tv_amount">Amount</string>
+    <string name="data_et_amount">No data yet. Click update.</string>
+    <string name="data_bt_update">Update Data</string>
+    <string name="data_bt_save">Save To File</string>
 </resources>

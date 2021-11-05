@@ -27,4 +27,11 @@
         android:onClick="view"
         android:layout_marginBottom="20dp"/>
 
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_data"
+        android:onClick="data"
+        android:layout_marginBottom="200dp"/>
+
 </LinearLayout>

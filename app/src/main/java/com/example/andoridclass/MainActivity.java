@@ -10,13 +10,6 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView tv1;
-    private TextView tv2;
-    private TextView tv3;
-    private TextView tv4;
-    private TextView tv5;
-    private Button bt;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +28,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void view(View v) {
         Intent intent = new Intent(MainActivity.this, BookListMainActivity.class);
+        startActivity(intent);
+    }
+
+    public void data(View v){
+        Intent intent = new Intent(MainActivity.this, Data.class);
         startActivity(intent);
     }
 }
