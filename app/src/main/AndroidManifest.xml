@@ -11,7 +11,7 @@
         android:theme="@style/Theme.AndoridClass">
         <activity
             android:name=".EditBookActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".BookListMainActivity"
             android:exported="true" />

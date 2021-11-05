@@ -24,12 +24,16 @@
     <string name="books_2">创新工程实践</string>
     <string name="books_3">信息安全数学基础（第2版）</string>
     <string name="recycleview_edit">Eidt</string>
-    <string name="recycleview_add">Insert Item Before</string>
+    <string name="recycleview_add">Insert Before Item</string>
     <string name="recycleview_edit2">Edit Item </string>
     <string name="recycleview_delete">Delete Item</string>
     <string name="recycleview_name">Name</string>
     <string name="recycleview_save">Save</string>
     <string name="recycleview_cancel">Cancel</string>
+    <string name="recycleview_deleteMessage">Are you sure to delete this item?</string>
+    <string name="recycleview_deleteTitle">Delete Confirmation</string>
+    <string name="recycleview_deleteConfirm">Delete</string>
+
 
     <string name="editBook_tv_name">Book Name</string>
     <string name="editBook_bt_save">Save</string>

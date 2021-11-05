@@ -12,7 +12,6 @@ public class EditBookActivity extends AppCompatActivity {
 
     private EditText editBook_et_name;
     private Button editBook_bt_save;
-    private Button editBook_bt_cancel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +20,6 @@ public class EditBookActivity extends AppCompatActivity {
 
         editBook_et_name = findViewById(R.id.editBook_et_name);
         editBook_bt_save = findViewById(R.id.editBook_bt_save);
-        editBook_bt_cancel = findViewById(R.id.editBook_bt_cancel);
 
         Intent intent = getIntent();
         int position = intent.getIntExtra("position", 0);
@@ -32,10 +30,10 @@ public class EditBookActivity extends AppCompatActivity {
         }
 
         editBook_bt_save.setOnClickListener(view-> {
-            Intent intent1 = new Intent();
-            intent1.putExtra("position", position);
-            intent1.putExtra("name", editBook_et_name.getText().toString());
-            setResult(BookListMainActivity.RESULT_CODE_ADD_DATA, intent1);
+            Intent backIntent = new Intent();
+            backIntent.putExtra("position", position);
+            backIntent.putExtra("name", editBook_et_name.getText().toString());
+            setResult(BookListMainActivity.RESULT_CODE_ADD_DATA, backIntent);
             EditBookActivity.this.finish();
         });
     }

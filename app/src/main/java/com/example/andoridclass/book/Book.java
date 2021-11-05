@@ -1,6 +1,8 @@
-package com.example.andoridclass;
+package com.example.andoridclass.book;
 
-public class Book {
+import java.io.Serializable;
+
+public class Book implements Serializable {
     private int picId;
     private String name;
 
@@ -15,6 +17,10 @@ public class Book {
 
     public String getName(){
         return name;
+    }
+
+    public void setPicId(int picId){
+        this.picId = picId;
     }
 
     public void setName(String name){
