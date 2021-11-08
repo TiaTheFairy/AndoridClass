@@ -7,31 +7,24 @@
     android:gravity="center">
 
     <Button
+        android:id="@+id/main_bt_buttons"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="@string/menu_button"
-        android:onClick="buttons"
         android:layout_marginBottom="20dp"/>
 
     <Button
+        android:id="@+id/main_bt_layout"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="@string/menu_layout"
-        android:onClick="layout"
         android:layout_marginBottom="20dp"/>
 
     <Button
+        android:id="@+id/main_bt_recycler"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="@string/menu_view"
-        android:onClick="view"
         android:layout_marginBottom="20dp"/>
-
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:text="@string/menu_editBook"
-        android:onClick="editBook"
-        android:layout_marginBottom="200dp"/>
 
 </LinearLayout>

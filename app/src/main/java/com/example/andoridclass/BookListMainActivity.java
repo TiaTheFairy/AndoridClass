@@ -46,7 +46,7 @@ public class BookListMainActivity extends AppCompatActivity {
                 int position = data.getIntExtra("position", books.size());
 
                 books.add(position, new Book(R.drawable.book_no_name, name));
-                //dataBank.saveData();
+                dataBank.saveData();
                 recyclerViewAdapter.notifyItemInserted(position);
             }
         }
@@ -61,8 +61,9 @@ public class BookListMainActivity extends AppCompatActivity {
                 if(null == data) return;
                 String name = data.getStringExtra("name");
                 int position = data.getIntExtra("position", books.size());
+
                 books.get(position).setName(name);
-                //dataBank.saveData();
+                dataBank.saveData();
                 recyclerViewAdapter.notifyItemChanged(position);
             }
         }
@@ -90,13 +91,13 @@ public class BookListMainActivity extends AppCompatActivity {
     }
 
     public void initData(){
+        dataBank = new DataBank(BookListMainActivity.this);
+        books = dataBank.loadData();
         /*
-        bookshelf = new bookshelf(BookListMainActivity.this);
-        books = bookshelf.loadData();*/
         books = new ArrayList<Book>();
         books.add(new Book(R.drawable.book_2,getResources().getString(R.string.books_1)));
         books.add(new Book(R.drawable.book_no_name,getResources().getString(R.string.books_2)));
-        books.add(new Book(R.drawable.book_1,getResources().getString(R.string.books_3)));
+        books.add(new Book(R.drawable.book_1,getResources().getString(R.string.books_3)));*/
     }
 
     private class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.MyViewHolder>{
@@ -181,7 +182,7 @@ public class BookListMainActivity extends AppCompatActivity {
                         AlertDialog.Builder alertDeleteConfirm = new AlertDialog.Builder(BookListMainActivity.this);
                         alertDeleteConfirm.setPositiveButton(BookListMainActivity.this.getResources().getString(R.string.recycleview_deleteConfirm), (dialogInterface, i) -> {
                             books.remove(position);
-                            //dataBank.saveData();
+                            dataBank.saveData();
                             MyRecyclerViewAdapter.this.notifyItemRemoved(position);
                         });
                         alertDeleteConfirm.setNegativeButton(BookListMainActivity.this.getResources().getString(R.string.recycleview_cancel),(dialogInterface, i) -> {
