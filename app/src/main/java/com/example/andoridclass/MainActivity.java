@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         main_bt_recycler.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, BookListMainActivity.class);
+                Intent intent = new Intent(MainActivity.this, Tablayout.class);
                 startActivity(intent);
             }
         });

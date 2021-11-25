@@ -9,15 +9,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
+        android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        srcCompact="@android:drawable/ic_input_add" />
-
+        android:src="@drawable/add" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycle_view_books"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:longClickable="true"/>
+        android:longClickable="true" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
