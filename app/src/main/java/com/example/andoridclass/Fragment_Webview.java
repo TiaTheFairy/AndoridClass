@@ -9,10 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.webkit.WebViewFragment;
 
 public class Fragment_Webview extends Fragment {
 
+    private WebView webView;
 
     public Fragment_Webview(){
 
@@ -36,9 +38,15 @@ public class Fragment_Webview extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.activity_fragment_webview, container, false);
-        WebView webView = rootView.findViewById(R.id.webview_web);
-        webView.loadUrl("www.baidu.com");
+        webView = rootView.findViewById(R.id.webview_web);
+        webView.setWebViewClient(new WebViewClient(){
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                return super.shouldOverrideUrlLoading(view, url);
+            }
+        });
         WebSettings webSettings = webView.getSettings();
+        webView.loadUrl("http://www.baidu.com");
         webSettings.setJavaScriptEnabled(true);
         return rootView;
     }

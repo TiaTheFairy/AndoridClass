@@ -12,6 +12,8 @@ import android.os.Bundle;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
+import java.util.List;
+
 public class Tablayout extends AppCompatActivity {
 
     private ViewPager2 pagerFragment;
@@ -29,7 +31,10 @@ public class Tablayout extends AppCompatActivity {
         TabLayoutMediator tab_medi = new TabLayoutMediator(tab_head, pagerFragment, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                tab.setText("Title" + position);
+                String[] title = {getResources().getString(R.string.tab_book), getResources().getString(R.string.tab_news), getResources().getString(R.string.tab_sell)};
+                for(int i=0; i<3; i++){
+                    tab.setText(title[i]);
+                }
             }
         });
         tab_medi.attach();
@@ -53,7 +58,7 @@ public class Tablayout extends AppCompatActivity {
 
         @Override
         public int getItemCount(){
-            return 2;
+            return 3;
         }
     }
 }
