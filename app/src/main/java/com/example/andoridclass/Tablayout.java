@@ -32,9 +32,7 @@ public class Tablayout extends AppCompatActivity {
             @Override
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
                 String[] title = {getResources().getString(R.string.tab_book), getResources().getString(R.string.tab_news), getResources().getString(R.string.tab_sell)};
-                for(int i=0; i<3; i++){
-                    tab.setText(title[i]);
-                }
+                tab.setText(title[position]);
             }
         });
         tab_medi.attach();
