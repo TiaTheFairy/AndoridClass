@@ -32,12 +32,12 @@
     <string name="recycleview_deleteMessage">Are you sure to delete this item?</string>
     <string name="recycleview_deleteTitle">Delete Confirmation</string>
     <string name="recycleview_deleteConfirm">Delete</string>
-    
+
     <string name="editBook_tv_name">Book Name</string>
     <string name="editBook_bt_save">Save</string>
     <string name="editBook_bt_cancel">Cancel</string>
-    
-    <string name="tab_book">图书</string>
-    <string name="tab_news">新闻</string>
-    <string name="tab_sell">卖家</string>
+
+    <string name="tab_1">图书</string>
+    <string name="tab_2">搜索</string>
+    <string name="tab_3">地图</string>
 </resources>

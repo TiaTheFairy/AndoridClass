@@ -31,7 +31,7 @@ public class Tablayout extends AppCompatActivity {
         TabLayoutMediator tab_medi = new TabLayoutMediator(tab_head, pagerFragment, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                String[] title = {getResources().getString(R.string.tab_book), getResources().getString(R.string.tab_news), getResources().getString(R.string.tab_sell)};
+                String[] title = {getResources().getString(R.string.tab_1), getResources().getString(R.string.tab_2), getResources().getString(R.string.tab_3)};
                 tab.setText(title[position]);
             }
         });
@@ -49,8 +49,10 @@ public class Tablayout extends AppCompatActivity {
             switch (position){
                 case 0:
                     return Fragment_BookList.newInstance();
-                default:
+                case 1:
                     return Fragment_Webview.newInstance();
+                default:
+                    return Fragment_Map.newInstance();
             }
         }
 
